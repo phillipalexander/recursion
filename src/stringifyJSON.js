@@ -34,7 +34,16 @@ var stringifyJSON = function (object) {
 			}
 			return "[" + result + "]";
 		} else {
-			// recursive section for (true) objects
+			//It's a boy/girl (object)!
+			for (key in object) {
+				if (Object.prototype.hasOwnProperty.call(object, key)) {
+					jsonKey = stringifyJSON(key);
+					jsonValue = stringifyJSON(object[key]);
+					result.push(jsonKey + ":" + jsonValue);
+				}
+			}
+			// return "{" + result.join() + "}";
+			return "{" + result + "}";
 		}
 
 	}
