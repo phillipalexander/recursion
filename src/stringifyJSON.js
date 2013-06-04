@@ -10,7 +10,7 @@ var stringifyJSON = function (object) {
 	case 'string':
 	case 'number':
 	case 'boolean':
-		return String(string);
+		return '"' + String(object) + '"';
 
 	case 'undefined':
 		return undefined;
