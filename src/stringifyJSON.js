@@ -8,18 +8,17 @@ var stringifyJSON = function (object) {
 	switch (typeof object) {
 
 	case 'string':
+		return "\"" + object + "\"";
+
 	case 'number':
 	case 'boolean':
-		return '"' + String(object) + '"';
+		return String(object);
 
 	case 'undefined':
+	case 'function':
 		return undefined;
 
-	case 'function':
-		// return null
-
 	case 'object':
-		//Null
 		if (!object) {
 			return 'null';
 		}
@@ -34,6 +33,7 @@ var stringifyJSON = function (object) {
 			}
 			return "[" + result + "]";
 		} else {
+
 			//It's a boy/girl (object)!
 			for (key in object) {
 				if (Object.prototype.hasOwnProperty.call(object, key)) {
