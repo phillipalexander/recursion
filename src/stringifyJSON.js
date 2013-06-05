@@ -39,12 +39,16 @@ var stringifyJSON = function (object) {
 				if (Object.prototype.hasOwnProperty.call(object, key)) {
 					jsonKey = stringifyJSON(key);
 					jsonValue = stringifyJSON(object[key]);
-					result.push(jsonKey + ":" + jsonValue);
+					// result.push(jsonKey + ":" + jsonValue);
+					if (!jsonValue) {
+						return "{}";
+					} else {
+						result.push(jsonKey + ":" + jsonValue);
+					}
 				}
 			}
 			// return "{" + result.join() + "}";
 			return "{" + result + "}";
 		}
-
 	}
 };
